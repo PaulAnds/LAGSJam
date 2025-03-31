@@ -8,7 +8,7 @@ public class PlayerCamera : MonoBehaviour
     public float lookDOWNLimit = 45f;
     public float lookUPLimit = -14f;
     private float rotationX = 0;
-    private Camera playerCamera;
+    public Camera playerCamera;
 
     void Start()
     {
