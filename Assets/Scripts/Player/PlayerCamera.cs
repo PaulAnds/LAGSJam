@@ -10,6 +10,10 @@ public class PlayerCamera : MonoBehaviour
     private float rotationX = 0;
     public Camera playerCamera;
     public PlayerMovement playermovement;
+    public bool moveCamera = false;
+    public Transform oldCameraLocation;
+    public Transform positionToMove;
+    public Transform newCameraLocation;
 
     void Start()
     {
@@ -17,6 +21,8 @@ public class PlayerCamera : MonoBehaviour
         playermovement = GetComponent<PlayerMovement>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        oldCameraLocation = transform.Find("PlayerCameraPosition");
+        newCameraLocation = transform.Find("CameraPlacement");
     }
 
     void Update()
@@ -27,6 +33,13 @@ public class PlayerCamera : MonoBehaviour
             rotationX = Mathf.Clamp(rotationX, lookUPLimit, lookDOWNLimit);
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed * Time.deltaTime, 0);
+        }
+    }
+
+    public void MoveCameraTo(Transform positionToMove){
+        if(playerCamera.transform.position != positionToMove.position){
+                playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, positionToMove.position, 5f * Time.deltaTime);
+                playerCamera.transform.rotation = Quaternion.Lerp(playerCamera.transform.rotation,positionToMove.transform.rotation,5f* Time.deltaTime);
         }
     }
 }
