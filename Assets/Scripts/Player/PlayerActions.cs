@@ -15,6 +15,7 @@ public class PlayerStats : MonoBehaviour
     private Camera playerCamera;
     private Volume CameraVolume;
     private Vignette volumeSettings; 
+    public PlayerMovement playermovement;
 
     public float test;
 
@@ -22,65 +23,69 @@ public class PlayerStats : MonoBehaviour
     {
         playerCamera = GetComponentInChildren<Camera>();
         heartBeatSound = GetComponent<AudioSource>();
+        playermovement = GetComponent<PlayerMovement>();
         CameraVolume = GetComponentInChildren<Volume>();
         test = 0f;
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q)){
-            //print("eyes closed....Heart Rate: " + heartRate);
-            //audio speed
-            heartRate = heartRate + (Time.deltaTime * agitationIncrement);
-            heartBeatSound.pitch = RemapRange(heartRate,0f,timeBeforeDeath,.5f,3f);
-
-            //Add Darkness
-            if (CameraVolume.profile.TryGet(out volumeSettings))
-            {
-                if(test<=1){
-                    test += Time.deltaTime;
-                }
-                volumeSettings.intensity.value = test;
-            }
-        }
-        else{
-            if(heartRate > 0){
-                //print("eyes open....Heart Rate: " + heartRate);
+        if(playermovement.canMove)
+        {
+            if (Input.GetKey(KeyCode.Q)){
+                //print("eyes closed....Heart Rate: " + heartRate);
                 //audio speed
-                heartRate = heartRate - (Time.deltaTime * agitationDecrement);
+                heartRate = heartRate + (Time.deltaTime * agitationIncrement);
                 heartBeatSound.pitch = RemapRange(heartRate,0f,timeBeforeDeath,.5f,3f);
-                
-                //Remove Darkness
+
+                //Add Darkness
                 if (CameraVolume.profile.TryGet(out volumeSettings))
                 {
-                    if(test>=0){
-                        test -= Time.deltaTime;
+                    if(test<=1){
+                        test += Time.deltaTime;
                     }
                     volumeSettings.intensity.value = test;
                 }
             }
             else{
-                heartBeatSound.pitch = 0f;
-            }
-        }
+                if(heartRate > 0){
+                    //print("eyes open....Heart Rate: " + heartRate);
+                    //audio speed
+                    heartRate = heartRate - (Time.deltaTime * agitationDecrement);
+                    heartBeatSound.pitch = RemapRange(heartRate,0f,timeBeforeDeath,.5f,3f);
 
-        //Raycast for interaction
-        if (Input.GetKey(KeyCode.E)){
-            RaycastHit hit;
-            if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
-            { 
-                Debug.Log("Did Hit"); 
-                Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-
-                //This checks to see if the object hit by racast has the interface IInteractable
-                IInteractable Iinteractable = hit.collider.gameObject.GetComponent<IInteractable>();
-                if (Iinteractable != null)
-                {
-                    Iinteractable.StartInteraction();
+                    //Remove Darkness
+                    if (CameraVolume.profile.TryGet(out volumeSettings))
+                    {
+                        if(test>=0){
+                            test -= Time.deltaTime;
+                        }
+                        volumeSettings.intensity.value = test;
+                    }
+                }
+                else{
+                    heartBeatSound.pitch = 0f;
                 }
             }
-            else{
-            Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward) * 1000, Color.yellow);
+
+            //Raycast for interaction
+            if (Input.GetKey(KeyCode.E)){
+                RaycastHit hit;
+                if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+                { 
+                    Debug.Log("Did Hit"); 
+                    Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+
+                    //This checks to see if the object hit by racast has the interface IInteractable
+                    IInteractable Iinteractable = hit.collider.gameObject.GetComponent<IInteractable>();
+                    if (Iinteractable != null)
+                    {
+                        Iinteractable.StartInteraction();
+                    }
+                }
+                else{
+                Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward) * 1000, Color.yellow);
+                }
             }
         }
     }
