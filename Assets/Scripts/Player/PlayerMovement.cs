@@ -11,6 +11,11 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = 10f;
     private CharacterController characterController;
 
+    //These have references in other scripts, need them public 
+    [HideInInspector]
+    public bool canMove = true;
+
+
 
     void Start()
     {
@@ -19,22 +24,24 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 right = transform.TransformDirection(Vector3.right);
+        if(canMove){
+            Vector3 forward = transform.TransformDirection(Vector3.forward);
+            Vector3 right = transform.TransformDirection(Vector3.right);
 
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        //use isRunningBoolean to see if the speed should use runspeed or walkspeed. And if the boolean canMove is false then it wont move at all
-        float curSpeedX = (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical");
-        float curSpeedY = (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal");
-        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+            bool isRunning = Input.GetKey(KeyCode.LeftShift);
+            //use isRunningBoolean to see if the speed should use runspeed or walkspeed. And if the boolean canMove is false then it wont move at all
+            float curSpeedX = (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical");
+            float curSpeedY = (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal");
+            moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        //On Air (add gravity to manage how fast the player will fall down if it falls down, just in case it starts flying?xd)
-        if (!characterController.isGrounded)
-        {
-            moveDirection.y -= gravity * Time.deltaTime;
+            //On Air (add gravity to manage how fast the player will fall down if it falls down, just in case it starts flying?xd)
+            if (!characterController.isGrounded)
+            {
+                moveDirection.y -= gravity * Time.deltaTime;
+            }
+
+            //Player movement line
+            characterController.Move(moveDirection * Time.deltaTime);
         }
-
-        //Player movement line
-        characterController.Move(moveDirection * Time.deltaTime);
     }
 }
