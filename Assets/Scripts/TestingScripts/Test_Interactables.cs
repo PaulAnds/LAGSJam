@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class Test_Interactables : MonoBehaviour, IInteractable
 {
-    public Transform positionToMove;
     public PlayerMovement playermovement;
     public PlayerCamera playercamera;
-
 
     void Start()
     {
@@ -14,9 +12,9 @@ public class Test_Interactables : MonoBehaviour, IInteractable
     }
 
     public void StartInteraction(){
-        print("Interacted");
+        //print("Interacted");
         playermovement.canMove = false;
-        positionToMove = playercamera.newCameraLocation;
+        playercamera.positionToMove = playercamera.newCameraLocation;
         playercamera.moveCamera = true;
     }
 
@@ -24,8 +22,8 @@ public class Test_Interactables : MonoBehaviour, IInteractable
     void Update()
     {
         if(playercamera.moveCamera){
-            playercamera.MoveCameraTo(positionToMove);
-            if(playercamera.playerCamera.transform.position == positionToMove.position){    
+            playercamera.MoveCameraTo(playercamera.positionToMove);
+            if(playercamera.playerCamera.transform.position == playercamera.positionToMove.position){    
                 playercamera.moveCamera = false;
             }
         }

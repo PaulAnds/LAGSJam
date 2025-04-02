@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 371708429}
   - component: {fileID: 371708433}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Destroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,7 +812,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5042c30055c4de4a98e676301b1348b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionToMove: {fileID: 0}
   playermovement: {fileID: 0}
   playercamera: {fileID: 0}
 --- !u!1 &1024738420 stripped
@@ -1925,6 +1924,10 @@ PrefabInstance:
       propertyPath: positionToMove
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5144492500577941817, guid: 199cdcb2539fa7b46976e579a10c335f, type: 3}
+      propertyPath: newCameraLocation
+      value: 
+      objectReference: {fileID: 1862382065}
     - target: {fileID: 8651242489317318973, guid: 199cdcb2539fa7b46976e579a10c335f, type: 3}
       propertyPath: m_Name
       value: Player

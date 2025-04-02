@@ -22,7 +22,7 @@ public class PlayerCamera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         oldCameraLocation = transform.Find("PlayerCameraPosition");
-        newCameraLocation = transform.Find("CameraPlacement");
+        newCameraLocation = transform.Find("Minigame1").GetChild(0);
     }
 
     void Update()

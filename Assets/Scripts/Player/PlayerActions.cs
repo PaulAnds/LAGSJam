@@ -69,11 +69,11 @@ public class PlayerStats : MonoBehaviour
             }
 
             //Raycast for interaction
-            if (Input.GetKey(KeyCode.E)){
+            if (Input.GetKeyDown(KeyCode.E)){
                 RaycastHit hit;
                 if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                 { 
-                    Debug.Log("Did Hit"); 
+                    //Debug.Log("Did Hit"); 
                     Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
 
                     //This checks to see if the object hit by racast has the interface IInteractable

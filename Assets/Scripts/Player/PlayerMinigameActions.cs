@@ -37,10 +37,12 @@ public class PlayerMinigameActions : MonoBehaviour
                 rb.AddForce(-canica.transform.right * speedDir.y);
                 speedDir.y = 0f;
             }
-            if(Input.GetKey(KeyCode.E)){
+            if(Input.GetKeyDown(KeyCode.E) && !playercamera.moveCamera){
+                playercamera.positionToMove = playercamera.oldCameraLocation;
                 playermovement.canMove = true;
                 playercamera.moveCamera = true;
             }
         }
     }
+
 }
