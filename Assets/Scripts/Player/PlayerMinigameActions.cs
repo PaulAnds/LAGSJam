@@ -7,6 +7,7 @@ public class PlayerMinigameActions : MonoBehaviour
     private Vector3 speedDir;
     private Rigidbody rb;
     private PlayerCamera playercamera;
+    private GameObject scale;
 
     //These have references in other scripts, need them public 
     [HideInInspector]
@@ -17,6 +18,7 @@ public class PlayerMinigameActions : MonoBehaviour
         playermovement = GetComponent<PlayerMovement>();
         speedDir.z = 2f;
         canica = GameObject.Find("Canica");
+        scale = GameObject.Find("Scale");
         rb = canica.GetComponent<Rigidbody>(); 
         playercamera = FindFirstObjectByType<PlayerCamera>();    
     }
@@ -32,13 +34,17 @@ public class PlayerMinigameActions : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.Space)){
                 charging = true;
-                speedDir.y += Time.deltaTime * 200;
+                if(scale.transform.localScale.x <= 0.7f){
+                    speedDir.y += Time.deltaTime * 200;
+                    scale.transform.localScale += new Vector3(0.1f,0,0) * (Time.deltaTime * 2.3f);
+                }
             }
             if (Input.GetKeyUp(KeyCode.Space)){
                 rb.constraints = RigidbodyConstraints.None;
                 //          cambiar esto v dependiendo de la posicion del minijuego
                 rb.AddForce(-canica.transform.right * speedDir.y);
                 speedDir.y = 0f;
+                scale.transform.localScale = new Vector3(.1f,.1f,.1f);
             }
             if(Input.GetKeyDown(KeyCode.E) && !playercamera.moveCamera){
                 playercamera.positionToMove = playercamera.oldCameraLocation;
