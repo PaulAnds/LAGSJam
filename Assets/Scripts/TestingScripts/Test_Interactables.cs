@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Test_Interactables : MonoBehaviour, IInteractable
 {
-    public PlayerMovement playermovement;
-    public PlayerCamera playercamera;
+    private PlayerMovement playermovement;
+    private PlayerCamera playercamera;
 
     void Start()
     {
@@ -14,7 +14,7 @@ public class Test_Interactables : MonoBehaviour, IInteractable
     public void StartInteraction(){
         //print("Interacted");
         playermovement.canMove = false;
-        playercamera.positionToMove = playercamera.newCameraLocation;
+        playercamera.positionToMove = playercamera.newCameraLocation.transform;
         playercamera.moveCamera = true;
     }
 

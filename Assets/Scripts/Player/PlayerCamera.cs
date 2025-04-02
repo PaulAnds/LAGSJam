@@ -7,13 +7,21 @@ public class PlayerCamera : MonoBehaviour
     public float lookSpeed = 180f;
     public float lookDOWNLimit = 45f;
     public float lookUPLimit = -14f;
+
     private float rotationX = 0;
+    private PlayerMovement playermovement;
+    
+    //These have references in other scripts, need them public 
+    [HideInInspector]
     public Camera playerCamera;
-    public PlayerMovement playermovement;
+    [HideInInspector]
     public bool moveCamera = false;
+    [HideInInspector]
     public Transform oldCameraLocation;
+    [HideInInspector]
     public Transform positionToMove;
-    public Transform newCameraLocation;
+    [HideInInspector]
+    public GameObject newCameraLocation;
 
     void Start()
     {
@@ -22,7 +30,7 @@ public class PlayerCamera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         oldCameraLocation = transform.Find("PlayerCameraPosition");
-        newCameraLocation = transform.Find("Minigame1").GetChild(0);
+        newCameraLocation = GameObject.Find("CameraPlacement");
     }
 
     void Update()

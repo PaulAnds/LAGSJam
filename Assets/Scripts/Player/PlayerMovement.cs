@@ -7,11 +7,14 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed = 6f;
     public float runSpeed = 12f;
 
-    public bool canMove = true;
-
     private Vector3 moveDirection = Vector3.zero;
     private float gravity = 10f;
     private CharacterController characterController;
+
+    //These have references in other scripts, need them public 
+    [HideInInspector]
+    public bool canMove = true;
+
 
 
     void Start()

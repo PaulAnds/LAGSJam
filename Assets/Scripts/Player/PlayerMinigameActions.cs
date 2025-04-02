@@ -2,18 +2,21 @@ using UnityEngine;
 
 public class PlayerMinigameActions : MonoBehaviour
 {
-    public PlayerMovement playermovement;
-    public GameObject canica;
-    public Vector3 speedDir;
-    public bool charging;
-    public Rigidbody rb;
-    public PlayerCamera playercamera;
+    private PlayerMovement playermovement;
+    private GameObject canica;
+    private Vector3 speedDir;
+    private Rigidbody rb;
+    private PlayerCamera playercamera;
 
+    //These have references in other scripts, need them public 
+    [HideInInspector]
+    public bool charging;
 
     void Start()
     {
         playermovement = GetComponent<PlayerMovement>();
         speedDir.z = 2f;
+        canica = GameObject.Find("Canica");
         rb = canica.GetComponent<Rigidbody>(); 
         playercamera = FindFirstObjectByType<PlayerCamera>();    
     }

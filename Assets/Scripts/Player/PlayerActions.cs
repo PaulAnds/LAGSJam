@@ -5,19 +5,18 @@ using UnityEngine.Rendering.Universal;
 
 public class PlayerStats : MonoBehaviour
 {
-    private float heartRate = 0f;
-    public float timeBeforeDeath = 5f;
+    [Header("Limit Values")]
+    public float timeBeforeDeath = 10f;
 
     //these are used if we want the "cooldown" of the heartbeat to go down or up faster, i imagine these will be used with the enemies?
     private float agitationIncrement = 1f;
+    private float heartRate = 1f;
     private float agitationDecrement = 1f;
     private AudioSource heartBeatSound;
     private Camera playerCamera;
     private Volume CameraVolume;
     private Vignette volumeSettings; 
-    public PlayerMovement playermovement;
-
-    public float test;
+    private PlayerMovement playermovement;
 
     void Start()
     {
@@ -25,7 +24,6 @@ public class PlayerStats : MonoBehaviour
         heartBeatSound = GetComponent<AudioSource>();
         playermovement = GetComponent<PlayerMovement>();
         CameraVolume = GetComponentInChildren<Volume>();
-        test = 0f;
     }
 
     void Update()
@@ -41,10 +39,9 @@ public class PlayerStats : MonoBehaviour
                 //Add Darkness
                 if (CameraVolume.profile.TryGet(out volumeSettings))
                 {
-                    if(test<=1){
-                        test += Time.deltaTime;
+                    if(volumeSettings.intensity.value<=1){
+                        volumeSettings.intensity.value += Time.deltaTime;
                     }
-                    volumeSettings.intensity.value = test;
                 }
             }
             else{
@@ -57,10 +54,9 @@ public class PlayerStats : MonoBehaviour
                     //Remove Darkness
                     if (CameraVolume.profile.TryGet(out volumeSettings))
                     {
-                        if(test>=0){
-                            test -= Time.deltaTime;
+                        if(volumeSettings.intensity.value>=0){
+                            volumeSettings.intensity.value -= Time.deltaTime;
                         }
-                        volumeSettings.intensity.value = test;
                     }
                 }
                 else{
