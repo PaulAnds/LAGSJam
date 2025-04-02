@@ -10,7 +10,10 @@ public class PlayerCamera : MonoBehaviour
 
     private float rotationX = 0;
     private PlayerMovement playermovement;
-    
+
+    //debug float, since lerp takes forever to finish
+    private float floatToStopWaitingTime = 0f;
+
     //These have references in other scripts, need them public 
     [HideInInspector]
     public Camera playerCamera;
@@ -30,7 +33,6 @@ public class PlayerCamera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         oldCameraLocation = transform.Find("PlayerCameraPosition");
-        newCameraLocation = GameObject.Find("CameraPlacement");
     }
 
     void Update()
@@ -46,8 +48,13 @@ public class PlayerCamera : MonoBehaviour
 
     public void MoveCameraTo(Transform positionToMove){
         if(playerCamera.transform.position != positionToMove.position){
-                playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, positionToMove.position, 5f * Time.deltaTime);
-                playerCamera.transform.rotation = Quaternion.Lerp(playerCamera.transform.rotation,positionToMove.transform.rotation,5f* Time.deltaTime);
+            playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, positionToMove.position, 4f * Time.deltaTime);
+            playerCamera.transform.rotation = Quaternion.Lerp(playerCamera.transform.rotation,positionToMove.transform.rotation, 4f * Time.deltaTime);
+            floatToStopWaitingTime += Time.deltaTime;
+            if(floatToStopWaitingTime >= 2f){
+                playerCamera.transform.position = positionToMove.position;
+                floatToStopWaitingTime = 0f;
+            }
         }
     }
 }

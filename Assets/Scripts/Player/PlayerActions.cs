@@ -1,26 +1,33 @@
 using System.Runtime.InteropServices;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 public class PlayerStats : MonoBehaviour
 {
+    [HideInInspector]
+    public enum CurrentGame {none, canica, football, dardo }
+
+
     [Header("Limit Values")]
     public float timeBeforeDeath = 10f;
+    [Header("Current Game")]
+    public CurrentGame currentGame = CurrentGame.none;
 
     //these are used if we want the "cooldown" of the heartbeat to go down or up faster, i imagine these will be used with the enemies?
     private float agitationIncrement = 1f;
-    private float heartRate = 1f;
     private float agitationDecrement = 1f;
+    private float heartRate = 1f;
     private AudioSource heartBeatSound;
-    private Camera playerCamera;
     private Volume CameraVolume;
     private Vignette volumeSettings; 
     private PlayerMovement playermovement;
+    private PlayerCamera playerCameraRef;
 
     void Start()
     {
-        playerCamera = GetComponentInChildren<Camera>();
+        playerCameraRef = GetComponentInChildren<PlayerCamera>();
         heartBeatSound = GetComponent<AudioSource>();
         playermovement = GetComponent<PlayerMovement>();
         CameraVolume = GetComponentInChildren<Volume>();
@@ -65,22 +72,22 @@ public class PlayerStats : MonoBehaviour
             }
 
             //Raycast for interaction
-            if (Input.GetKeyDown(KeyCode.E)){
+            if (Input.GetKeyDown(KeyCode.E) && !playerCameraRef.moveCamera){
                 RaycastHit hit;
-                if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+                if (Physics.Raycast(playerCameraRef.playerCamera.transform.position, playerCameraRef.playerCamera.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
                 { 
                     //Debug.Log("Did Hit"); 
-                    Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+                    Debug.DrawRay(playerCameraRef.playerCamera.transform.position, playerCameraRef.playerCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
 
                     //This checks to see if the object hit by racast has the interface IInteractable
                     IInteractable Iinteractable = hit.collider.gameObject.GetComponent<IInteractable>();
                     if (Iinteractable != null)
                     {
-                        Iinteractable.StartInteraction();
+                        Iinteractable.StartInteraction(hit.collider.gameObject);
                     }
                 }
                 else{
-                Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward) * 1000, Color.yellow);
+                Debug.DrawRay(playerCameraRef.playerCamera.transform.position, playerCameraRef.playerCamera.transform.TransformDirection(Vector3.forward) * 1000, Color.yellow);
                 }
             }
         }

@@ -1,4 +1,6 @@
+using UnityEngine;
+
 public interface IInteractable
 {
-    void StartInteraction();
+    void StartInteraction(GameObject hit);
 }
