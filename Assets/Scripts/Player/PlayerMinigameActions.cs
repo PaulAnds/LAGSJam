@@ -3,12 +3,15 @@ using UnityEngine;
 public class PlayerMinigameActions : MonoBehaviour
 {
     private PlayerMovement playermovement;
-    private GameObject canica;
+    [HideInInspector]
+    public GameObject canica;
     private Vector3 speedDir;
-    private Rigidbody rb;
+    [HideInInspector]
+    public Rigidbody rb;
     private PlayerCamera playercamera;
     private PlayerStats playerActions;
     private GameObject scale;
+    public float canicaSpeed;
 
     //These have references in other scripts, need them public 
     [HideInInspector]
@@ -18,7 +21,7 @@ public class PlayerMinigameActions : MonoBehaviour
     {
         playermovement = GetComponent<PlayerMovement>();
         playerActions = GetComponent<PlayerStats>();
-        speedDir.z = 2f;
+        speedDir.z = canicaSpeed;
         canica = GameObject.Find("Canica");
         scale = GameObject.Find("Scale");
         rb = canica.GetComponent<Rigidbody>(); 
@@ -30,18 +33,15 @@ public class PlayerMinigameActions : MonoBehaviour
         if(!playermovement.canMove){
 
             if(Input.GetKeyDown(KeyCode.E) && !playercamera.moveCamera){
-                playercamera.positionToMove = playercamera.oldCameraLocation;
-                playermovement.canMove = true;
-                playercamera.moveCamera = true;
-                playerActions.currentGame = PlayerStats.CurrentGame.none;
+                ExitGame();
             }
 
             //Canica
             if(playerActions.currentGame == PlayerStats.CurrentGame.canica){
-                if (Input.GetKey(KeyCode.A)&& canica.transform.position.z >= -0.5f && !charging){
+                if (Input.GetKey(KeyCode.A)&& canica.transform.localPosition.z >= 0.1f && !charging){
                     canica.transform.position -= speedDir * Time.deltaTime;
                 }
-                if (Input.GetKey(KeyCode.D)&& canica.transform.position.z <= 0.5f && !charging){
+                if (Input.GetKey(KeyCode.D)&& canica.transform.localPosition.z <= 0.98f && !charging){
                     canica.transform.position += speedDir * Time.deltaTime;
                 }
                 if (Input.GetKey(KeyCode.Space)){
@@ -65,6 +65,13 @@ public class PlayerMinigameActions : MonoBehaviour
             
             }
         }
+    }
+
+    public void ExitGame(){
+        playercamera.positionToMove = playercamera.oldCameraLocation;
+        playermovement.canMove = true;
+        playercamera.moveCamera = true;
+        playerActions.currentGame = PlayerStats.CurrentGame.none;
     }
 
 }
