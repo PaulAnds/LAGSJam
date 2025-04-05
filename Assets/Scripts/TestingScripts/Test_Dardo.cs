@@ -2,17 +2,15 @@ using UnityEngine;
 
 public class Test_Dardo : MonoBehaviour
 {
-    public GameObject dart;
-    public Vector3 originalSpawn;
-    public PlayerMinigameActions playerActions;
-    public GameManager gameManager;
+    private Vector3 originalSpawn;
+    private PlayerMinigameActions playerActions;
+    private GameManager gameManager;
 
     void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
         playerActions = FindFirstObjectByType<PlayerMinigameActions>();
-        dart = GameObject.Find("Dart");
-        originalSpawn = dart.transform.position;
+        originalSpawn = transform.position;
     }
     void OnTriggerEnter(Collider other)
     {
@@ -24,7 +22,7 @@ public class Test_Dardo : MonoBehaviour
                 gameManager.hasWonDarts = true;
 
             }
-            dart.transform.position = originalSpawn;
+            transform.position = originalSpawn;
             playerActions.choosingDartPosition = true;
             playerActions.shootingDart = false;
         }

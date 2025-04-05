@@ -5,10 +5,10 @@ public class Test_CheckCanicas : MonoBehaviour
 {
     public GameObject objectToSpawn;
     public float scoreValue; 
-    public bool ballIn;
-    public Test_DestroyProjectiles originSpawnLocation;
-    public PlayerMinigameActions playerActionRef;
-    public GameManager gameManager;
+    private bool ballIn;
+    private Test_DestroyProjectiles originSpawnLocation;
+    private PlayerMinigameActions playerActionRef;
+    private GameManager gameManager;
 
     void Start()
     {

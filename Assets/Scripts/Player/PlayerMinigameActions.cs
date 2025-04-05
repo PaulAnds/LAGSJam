@@ -7,6 +7,7 @@ public class PlayerMinigameActions : MonoBehaviour
     private Vector3 speedDir;
     private PlayerCamera playercamera;
     private PlayerStats playerActions;
+    private GameManager gameManager;
     private GameObject scale;
     //Darts
     private GameObject dart;
@@ -16,12 +17,6 @@ public class PlayerMinigameActions : MonoBehaviour
     private Vector3 originalPosition;
     private Vector3 endPosition;
     private float elapseTime;
-
-    [Header("Marble Settings")]
-    public float marbleSpeed = 2f;
-    [Header("Dart Settings")]
-    public float frequency = 3f;
-    public float speed = 3f;
 
 
     //These have references in other scripts, need them public, not needed on inspector
@@ -39,8 +34,9 @@ public class PlayerMinigameActions : MonoBehaviour
     void Start()
     {
         playermovement = GetComponent<PlayerMovement>();
+        gameManager = FindFirstObjectByType<GameManager>();
         playerActions = GetComponent<PlayerStats>();
-        speedDir.z = marbleSpeed;
+        speedDir.z = gameManager.marbleSpeed;
         marble = GameObject.Find("Marble");
         dart = GameObject.Find("Dart");
         scale = GameObject.Find("Scale");
@@ -85,25 +81,25 @@ public class PlayerMinigameActions : MonoBehaviour
                 
                 if(choosingDartPosition){
                     Vector3 mousePos = Input.mousePosition;
-                    mousePos.x = RemapRange(mousePos.x,0f,563f,-7f,-5f);
-                    mousePos.y = RemapRange(mousePos.y,317f,1f,2.75f,1.37f);
-                    mousePos.z = -6.5f; // Keep the object in the 2D plane
-                    dart.transform.position = mousePos;
-                    Vector3 p = dart.transform.position;
-                    p.y = (Mathf.Cos(Time.time*speed)/frequency);
-                    p.x = (Mathf.Sin(Time.time*speed)/frequency);
-                    dart.transform.position = new Vector3(mousePos.x-p.x,mousePos.y+p.y,mousePos.z);
+                    mousePos.x = RemapRange(mousePos.x,0f,Display.main.systemWidth,1f,-1f);
+                    mousePos.y = RemapRange(mousePos.y,Display.main.systemHeight,0f,2.7f,1.35f);
+                    mousePos.z = .8f; // Keep the object in the 2D plane
+                    dart.transform.localPosition = mousePos;
+                    Vector3 p = dart.transform.localPosition;
+                    p.y = (Mathf.Cos(Time.time*gameManager.speed)/gameManager.frequency);
+                    p.x = (Mathf.Sin(Time.time*gameManager.speed)/gameManager.frequency);
+                    dart.transform.localPosition = new Vector3(mousePos.x-p.x,mousePos.y+p.y,mousePos.z);
                 }
                 
                 if(lockMouse){
                     Cursor.lockState = CursorLockMode.Confined;
                     lockMouse = false;
                 }
-                if (Input.GetKey(KeyCode.Mouse0)){
+                if (Input.GetKey(KeyCode.Mouse0) && !shootingDart){
                     if(!isPulled){
-                        originalPosition = dart.transform.position ;
+                        originalPosition = dart.transform.position;
                         endPosition = originalPosition + new Vector3(0,0,1.5f);
-                        pullPosition = originalPosition - new Vector3(0,0,.25f) ;
+                        pullPosition = originalPosition - new Vector3(0,0,.25f);
                         isPulled = true;
                     }
                     elapseTime += Time.deltaTime;
@@ -112,7 +108,7 @@ public class PlayerMinigameActions : MonoBehaviour
                     //stop animation of moving and start animation of pulling back
                     dart.transform.position = Vector3.Lerp(originalPosition, pullPosition, percentageComplete);
                 }
-                if (Input.GetKeyUp(KeyCode.Mouse0)){
+                if (Input.GetKeyUp(KeyCode.Mouse0) && !shootingDart){
                     //shoot
                     if(isPulled){
                         elapseTime = 0f;

@@ -1,5 +1,3 @@
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.Rendering;
@@ -26,8 +24,8 @@ public class PlayerStats : MonoBehaviour
     private ColorAdjustments colorSettings; 
     private PlayerMovement playermovement;
     private PlayerCamera playerCameraRef;
-    public MultiAimConstraint headRotation;
-    public MultiAimConstraint bodyRotation;
+    private MultiAimConstraint headRotation;
+    private MultiAimConstraint bodyRotation;
 
     void Start()
     {
@@ -169,7 +167,7 @@ public class PlayerStats : MonoBehaviour
         }
         var test = headRotation.data.sourceObjects;
         //set this to use lerp
-        
+
         test.SetWeight(index,0f);
         headRotation.data.sourceObjects = test;
         bodyRotation.data.sourceObjects = test;

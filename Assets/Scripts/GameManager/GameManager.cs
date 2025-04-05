@@ -8,11 +8,14 @@ public class GameManager : MonoBehaviour
     public bool hasWonSoccer;
     public bool hasWonDarts;
     
-    [Header("Canica Settings")]
+    [Header("Marble Settings")]
     public float numberOfTriesMarble;
+    public float marbleSpeed = 1.5f;
     
-    [Header("Canica Settings")]
+    [Header("Dart Settings")]
     public float numberOfBalloonsToWin;
+    public float frequency = 3f;
+    public float speed = 3f;
 
     [Header("References")]
     public Text totalPointsMarbleText;
