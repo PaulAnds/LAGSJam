@@ -4,8 +4,8 @@ using UnityEngine.Rendering.Universal;
 
 public class PlayerStats : MonoBehaviour
 {
-    [HideInInspector]
-    public enum CurrentGame {none, canica, football, dardo }
+    //[HideInInspector]
+    public enum CurrentGame {none, marble, soccer, dart }
 
 
     [Header("Limit Values")]

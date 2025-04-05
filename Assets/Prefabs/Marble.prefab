@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4751771082578612872}
   - component: {fileID: 990508031928279495}
   m_Layer: 0
-  m_Name: Canica
+  m_Name: Marble
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4,29 +4,31 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [Header("Won Games")]
-    public bool hasWonCanicas;
-    public bool hasWonFootball;
-    public bool hasWonDardos;
+    public bool hasWonMarble;
+    public bool hasWonSoccer;
+    public bool hasWonDarts;
     
     [Header("Canica Settings")]
-    public float numberOfTriesCanicas;
+    public float numberOfTriesMarble;
     
     [Header("Canica Settings")]
     public float numberOfBalloonsToWin;
 
     [Header("References")]
-    public Text totalPointsCanicasText;
-    public Text numberOfTriesCanicasText;
+    public Text totalPointsMarbleText;
+    public Text numberOfTriesMarbleText;
 
     [HideInInspector] 
-    public float totalPointsCanicas;
+    public float numberOfCurrentTries;
+    [HideInInspector] 
+    public float totalPointsMarble;
 
     void Update()
     {
-        totalPointsCanicasText.text = totalPointsCanicas.ToString();
+        totalPointsMarbleText.text = totalPointsMarble.ToString();
     }
 
-    public void ChangeTextCanicasLeft(float numberOfTriesLeft){
-        numberOfTriesCanicasText.text = "Canicas Restantes: " + numberOfTriesLeft.ToString();
+    public void ChangeTextMarbleLeft(float numberOfTriesLeft){
+        numberOfTriesMarbleText.text = "Canicas Restantes: " + numberOfTriesLeft.ToString();
     }
 }

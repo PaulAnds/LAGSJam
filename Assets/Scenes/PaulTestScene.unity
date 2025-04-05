@@ -385,7 +385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 62726745}
   m_Layer: 0
-  m_Name: CameraPlacement_Football
+  m_Name: CameraPlacement_Soccer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1520,7 +1520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 259459210}
   m_Layer: 0
-  m_Name: CameraPlacement_Dardo
+  m_Name: CameraPlacement_Dart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1980,9 +1980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921d169fcea932f48bfc0b0fb4ed0271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canica: {fileID: 0}
-  spherePosition: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
+  spherePosition: {x: 0, y: 0, z: 0}
+  marble: {fileID: 0}
 --- !u!1001 &425006394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2971,7 +2971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 570119048}
   m_Layer: 0
-  m_Name: Minigame_Dardo
+  m_Name: Minigame_Dart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3947,7 +3947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 762318669}
   m_Layer: 0
-  m_Name: Minigame_Football
+  m_Name: Minigame_Soccer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3967,6 +3967,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1441661726}
+  - {fileID: 1969476787}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &768250780
@@ -4112,7 +4113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4763963486906725040, guid: 298938de12741234d823d499e0548138, type: 3}
       propertyPath: m_TagString
-      value: Dardo
+      value: DartGame
       objectReference: {fileID: 0}
     - target: {fileID: 5284744509118343178, guid: 298938de12741234d823d499e0548138, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5543,7 +5544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1173580919}
   m_Layer: 0
-  m_Name: Minigame_Canica
+  m_Name: Minigame_Marble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6229,7 +6230,7 @@ GameObject:
   - component: {fileID: 1441661727}
   m_Layer: 0
   m_Name: InteractStart
-  m_TagString: Football
+  m_TagString: SoccerGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6790,7 +6791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1307508527685711298, guid: b3df5c3a91c465746a027ce4d0a7057d, type: 3}
       propertyPath: m_TagString
-      value: Canica
+      value: MarbleGame
       objectReference: {fileID: 0}
     - target: {fileID: 1832653579713802104, guid: b3df5c3a91c465746a027ce4d0a7057d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7214,6 +7215,63 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &1761680030
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 762318669}
+    m_Modifications:
+    - target: {fileID: 1380659326308929706, guid: 0c48223024435df45b82e952d2549304, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380659326308929706, guid: 0c48223024435df45b82e952d2549304, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380659326308929706, guid: 0c48223024435df45b82e952d2549304, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380659326308929706, guid: 0c48223024435df45b82e952d2549304, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710665
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380659326308929706, guid: 0c48223024435df45b82e952d2549304, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380659326308929706, guid: 0c48223024435df45b82e952d2549304, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710695
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380659326308929706, guid: 0c48223024435df45b82e952d2549304, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380659326308929706, guid: 0c48223024435df45b82e952d2549304, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380659326308929706, guid: 0c48223024435df45b82e952d2549304, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380659326308929706, guid: 0c48223024435df45b82e952d2549304, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757185586080844304, guid: 0c48223024435df45b82e952d2549304, type: 3}
+      propertyPath: m_Name
+      value: SM_PuestoFut
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c48223024435df45b82e952d2549304, type: 3}
 --- !u!1001 &1775384709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7648,7 +7706,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1862382065}
   m_Layer: 0
-  m_Name: CameraPlacement_Canica
+  m_Name: CameraPlacement_Marble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8142,48 +8200,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1325846393203350731, guid: 5fcea85511ab6704a98b78c258f5bbe2, type: 3}
---- !u!1 &1940044393 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3031818440900336359, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
-  m_PrefabInstance: {fileID: 2126997023}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1940044401
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940044393}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.15, y: 0.09847791, z: 0.0984779}
-  m_Center: {x: 0.18, y: -6.661319e-16, z: -0.00000011920929}
---- !u!114 &1940044402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940044393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc0952dc124dfc74a9654d4693761dcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dardo: {fileID: 0}
-  originalSpawn: {x: 0, y: 0, z: 0}
-  playerActions: {fileID: 0}
-  gameManager: {fileID: 0}
 --- !u!1 &1946285634
 GameObject:
   m_ObjectHideFlags: 0
@@ -8292,6 +8308,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946285634}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1969476787 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1380659326308929706, guid: 0c48223024435df45b82e952d2549304, type: 3}
+  m_PrefabInstance: {fileID: 1761680030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1977158228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8581,14 +8602,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575fa243a5ca06142941499e0c9dbaaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasWonCanicas: 0
-  hasWonFootball: 0
-  hasWonDardos: 0
-  numberOfTriesCanicas: 5
+  hasWonMarble: 0
+  hasWonSoccer: 0
+  hasWonDarts: 0
+  numberOfTriesMarble: 5
   numberOfBalloonsToWin: 10
-  totalPointsCanicasText: {fileID: 320579314}
-  numberOfTriesCanicasText: {fileID: 202772579}
-  totalPointsCanicas: 0
+  totalPointsMarbleText: {fileID: 320579314}
+  numberOfTriesMarbleText: {fileID: 202772579}
+  numberOfCurrentTries: 0
+  totalPointsMarble: 0
 --- !u!1 &2039219873
 GameObject:
   m_ObjectHideFlags: 0
@@ -8751,7 +8773,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1001 &2126997023
+--- !u!1001 &1659276085218132707
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8759,65 +8781,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2402950104838799453, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
+    - target: {fileID: 8540639764613855427, guid: ee7339c473fc0974184c2e328b761891, type: 3}
+      propertyPath: m_Name
+      value: Dart
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065079956418208377, guid: ee7339c473fc0974184c2e328b761891, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.57
       objectReference: {fileID: 0}
-    - target: {fileID: 2402950104838799453, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
+    - target: {fileID: 9065079956418208377, guid: ee7339c473fc0974184c2e328b761891, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.793
       objectReference: {fileID: 0}
-    - target: {fileID: 2402950104838799453, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
+    - target: {fileID: 9065079956418208377, guid: ee7339c473fc0974184c2e328b761891, type: 3}
       propertyPath: m_LocalPosition.z
       value: -6.973
       objectReference: {fileID: 0}
-    - target: {fileID: 2402950104838799453, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
+    - target: {fileID: 9065079956418208377, guid: ee7339c473fc0974184c2e328b761891, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.49999973
       objectReference: {fileID: 0}
-    - target: {fileID: 2402950104838799453, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
+    - target: {fileID: 9065079956418208377, guid: ee7339c473fc0974184c2e328b761891, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.50000006
       objectReference: {fileID: 0}
-    - target: {fileID: 2402950104838799453, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
+    - target: {fileID: 9065079956418208377, guid: ee7339c473fc0974184c2e328b761891, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0.5000001
       objectReference: {fileID: 0}
-    - target: {fileID: 2402950104838799453, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
+    - target: {fileID: 9065079956418208377, guid: ee7339c473fc0974184c2e328b761891, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.50000006
       objectReference: {fileID: 0}
-    - target: {fileID: 2402950104838799453, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
+    - target: {fileID: 9065079956418208377, guid: ee7339c473fc0974184c2e328b761891, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 2402950104838799453, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
+    - target: {fileID: 9065079956418208377, guid: ee7339c473fc0974184c2e328b761891, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2402950104838799453, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
+    - target: {fileID: 9065079956418208377, guid: ee7339c473fc0974184c2e328b761891, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3031818440900336359, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
-      propertyPath: m_Name
-      value: Dardo
-      objectReference: {fileID: 0}
-    - target: {fileID: 3031818440900336359, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
-      propertyPath: m_TagString
-      value: Projectile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3031818440900336359, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1940044401}
-    - targetCorrespondingSourceObject: {fileID: 3031818440900336359, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1940044402}
-  m_SourcePrefab: {fileID: 100100000, guid: d3be11c1b004a4345acda5d53282f491, type: 3}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee7339c473fc0974184c2e328b761891, type: 3}
 --- !u!1001 &2037627327152781812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8867,14 +8879,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4194777345011624565, guid: 199cdcb2539fa7b46976e579a10c335f, type: 3}
-      propertyPath: speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194777345011624565, guid: 199cdcb2539fa7b46976e579a10c335f, type: 3}
-      propertyPath: frequency
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194777345011624565, guid: 199cdcb2539fa7b46976e579a10c335f, type: 3}
       propertyPath: canicaSpeed
       value: 1
       objectReference: {fileID: 0}
@@ -8897,7 +8901,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5292058593822958664, guid: efaeb5cf5fe0ef24aaeeb6989188ec74, type: 3}
       propertyPath: m_Name
-      value: Canica
+      value: Marble
       objectReference: {fileID: 0}
     - target: {fileID: 8557419972375933250, guid: efaeb5cf5fe0ef24aaeeb6989188ec74, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8956,4 +8960,4 @@ SceneRoots:
   - {fileID: 570119048}
   - {fileID: 762318669}
   - {fileID: 8621258779563075714}
-  - {fileID: 2126997023}
+  - {fileID: 1659276085218132707}

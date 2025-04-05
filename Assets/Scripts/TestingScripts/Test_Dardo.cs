@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Test_Dardo : MonoBehaviour
 {
-    public GameObject dardo;
+    public GameObject dart;
     public Vector3 originalSpawn;
     public PlayerMinigameActions playerActions;
     public GameManager gameManager;
@@ -11,8 +11,8 @@ public class Test_Dardo : MonoBehaviour
     {
         gameManager = FindFirstObjectByType<GameManager>();
         playerActions = FindFirstObjectByType<PlayerMinigameActions>();
-        dardo = GameObject.Find("Dardo");
-        originalSpawn = dardo.transform.position;
+        dart = GameObject.Find("Dart");
+        originalSpawn = dart.transform.position;
     }
     void OnTriggerEnter(Collider other)
     {
@@ -21,10 +21,10 @@ public class Test_Dardo : MonoBehaviour
             gameManager.numberOfBalloonsToWin--;
             if(gameManager.numberOfBalloonsToWin <= 0){
                 playerActions.ExitGame();
-                gameManager.hasWonDardos = true;
+                gameManager.hasWonDarts = true;
 
             }
-            dardo.transform.position = originalSpawn;
+            dart.transform.position = originalSpawn;
             playerActions.choosingDartPosition = true;
             playerActions.shootingDart = false;
         }

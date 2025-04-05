@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class Test_DestroyProjectiles : MonoBehaviour
 {
-    [HideInInspector]
-    public GameObject canica;
-    [HideInInspector]
-    public Vector3 spherePosition;
     private PlayerMinigameActions playerActionRef;
     [HideInInspector]
     public Rigidbody rb;
+    [HideInInspector]
+    public Vector3 spherePosition;
+    [HideInInspector]
+    public GameObject marble;
 
     void Start()
     {
         playerActionRef = FindAnyObjectByType<PlayerMinigameActions>();
-        canica = GameObject.Find("Canica");
-        spherePosition = canica.transform.position; 
-        rb = canica.GetComponent<Rigidbody>();
+        marble = GameObject.Find("Marble");
+        spherePosition = marble.transform.position; 
+        rb = marble.GetComponent<Rigidbody>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -23,12 +23,12 @@ public class Test_DestroyProjectiles : MonoBehaviour
         
         if(collision.gameObject.tag == "Projectile")
         {
-            canica.transform.position = spherePosition;
+            marble.transform.position = spherePosition;
             rb.constraints = RigidbodyConstraints.FreezePositionY;
             rb.constraints = RigidbodyConstraints.FreezePositionX;
             playerActionRef.charging = false;
             rb.freezeRotation = true;
-            canica.transform.rotation = new Quaternion(0,0,0,0);
+            marble.transform.rotation = new Quaternion(0,0,0,0);
         }
     }
 }
