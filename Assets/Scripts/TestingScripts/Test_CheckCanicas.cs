@@ -28,13 +28,11 @@ public class Test_CheckCanicas : MonoBehaviour
             if(gameManager.numberOfCurrentTries < gameManager.numberOfTriesMarble - 1f){
                 gameManager.numberOfCurrentTries++;
                 gameManager.ChangeTextMarbleLeft(Math.Abs(gameManager.numberOfCurrentTries-5));
-                print("try "+ gameManager.numberOfCurrentTries);
             }
             else{
                 gameManager.numberOfCurrentTries = 0f;
                 gameManager.totalPointsMarble = 0f;
                 gameManager.ChangeTextMarbleLeft(5f);
-                print("Reset");
             }
 
             ballIn = true;

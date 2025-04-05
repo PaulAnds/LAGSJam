@@ -1,4 +1,7 @@
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -20,8 +23,11 @@ public class PlayerStats : MonoBehaviour
     private AudioSource heartBeatSound;
     private Volume CameraVolume;
     private Vignette volumeSettings; 
+    private ColorAdjustments colorSettings; 
     private PlayerMovement playermovement;
     private PlayerCamera playerCameraRef;
+    public MultiAimConstraint headRotation;
+    public MultiAimConstraint bodyRotation;
 
     void Start()
     {
@@ -29,6 +35,9 @@ public class PlayerStats : MonoBehaviour
         heartBeatSound = GetComponent<AudioSource>();
         playermovement = GetComponent<PlayerMovement>();
         CameraVolume = GetComponentInChildren<Volume>();
+        headRotation = GetComponentInChildren<MultiAimConstraint>();
+        //xd
+        bodyRotation = gameObject.transform.GetChild(2).GetChild(5).GetChild(1).GetComponent<MultiAimConstraint>();
     }
 
     void Update()
@@ -48,6 +57,11 @@ public class PlayerStats : MonoBehaviour
                         volumeSettings.intensity.value += Time.deltaTime;
                     }
                 }
+                if(CameraVolume.profile.TryGet(out colorSettings)){
+                    if(colorSettings.postExposure.value >= -8){
+                        colorSettings.postExposure.value -= Time.deltaTime*8f;
+                    }
+                }
             }
             else{
                 if(heartRate > 0){
@@ -63,6 +77,11 @@ public class PlayerStats : MonoBehaviour
                             volumeSettings.intensity.value -= Time.deltaTime;
                         }
                     }
+                    if(CameraVolume.profile.TryGet(out colorSettings)){
+                        if(colorSettings.postExposure.value <= 0){
+                            colorSettings.postExposure.value += Time.deltaTime*8f;
+                    }
+                }
                 }
                 else{
                     heartBeatSound.pitch = 0f;
@@ -103,6 +122,57 @@ public class PlayerStats : MonoBehaviour
         else{
             return (value - InputA) / (InputB - InputA) * (OutputB - OutputA) + OutputA;
         }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        int index = -1;
+        
+        switch(other.gameObject.tag){
+            case "MarbleGame":
+                    index = 0;
+                break;     
+            case "DartGame":
+                    index = 1;
+                break;               
+            case "SoccerGame":
+                    index = 2;
+                break;
+            default:
+                index = -1;
+                break;
+        }
+        var test = headRotation.data.sourceObjects;
+        //set this to use lerp
+        test.SetWeight(index,1f);
+        headRotation.data.sourceObjects = test;
+        bodyRotation.data.sourceObjects = test;
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        int index = -1;
+        
+        switch(other.gameObject.tag){
+            case "MarbleGame":
+                    index = 0;
+                break;     
+            case "DartGame":
+                    index = 1;
+                break;               
+            case "SoccerGame":
+                    index = 2;
+                break;
+            default:
+                index = -1;
+                break;
+        }
+        var test = headRotation.data.sourceObjects;
+        //set this to use lerp
+        
+        test.SetWeight(index,0f);
+        headRotation.data.sourceObjects = test;
+        bodyRotation.data.sourceObjects = test;
     }
 
 }
