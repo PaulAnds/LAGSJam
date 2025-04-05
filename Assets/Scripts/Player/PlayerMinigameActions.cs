@@ -17,15 +17,29 @@ public class PlayerMinigameActions : MonoBehaviour
     [HideInInspector]
     public bool charging;
 
+    //dardo variables
+    public GameObject dardo;
+    public bool lockMouse = true;
+    public bool isPulled = false;
+    public bool choosingDartPosition = true;
+    public Vector3 pullPosition;
+    public Vector3 originalPosition;
+    public Vector3 endPosition;
+    public float elapseTime;
+    public bool shootingDart;
+    public float frequency = 50f;
+    public float speed = 3f;
+
     void Start()
     {
         playermovement = GetComponent<PlayerMovement>();
         playerActions = GetComponent<PlayerStats>();
         speedDir.z = canicaSpeed;
         canica = GameObject.Find("Canica");
+        dardo = GameObject.Find("Dardo");
         scale = GameObject.Find("Scale");
         rb = canica.GetComponent<Rigidbody>(); 
-        playercamera = FindFirstObjectByType<PlayerCamera>();    
+        playercamera = FindFirstObjectByType<PlayerCamera>();
     }
 
     void Update()
@@ -62,7 +76,50 @@ public class PlayerMinigameActions : MonoBehaviour
 
             //Darts
             if(playerActions.currentGame == PlayerStats.CurrentGame.dardo){
-            
+                
+                if(choosingDartPosition){
+                    Vector3 mousePos = Input.mousePosition;
+                    mousePos.x = RemapRange(mousePos.x,0f,563f,-7f,-5f);
+                    mousePos.y = RemapRange(mousePos.y,317f,1f,2.75f,1.37f);
+                    mousePos.z = -6.5f; // Keep the object in the 2D plane
+                    dardo.transform.position = mousePos;
+                    Vector3 p = dardo.transform.position;
+                    p.y = (Mathf.Cos(Time.time*speed)/frequency);
+                    p.x = (Mathf.Sin(Time.time*speed)/frequency);
+                    dardo.transform.position = new Vector3(mousePos.x-p.x,mousePos.y+p.y,mousePos.z);
+                }
+                
+                if(lockMouse){
+                    Cursor.lockState = CursorLockMode.Confined;
+                    lockMouse = false;
+                }
+                if (Input.GetKey(KeyCode.Mouse0)){
+                    if(!isPulled){
+                        originalPosition = dardo.transform.position ;
+                        endPosition = originalPosition + new Vector3(0,0,1.5f);
+                        pullPosition = originalPosition - new Vector3(0,0,.25f) ;
+                        isPulled = true;
+                    }
+                    elapseTime += Time.deltaTime;
+                    float percentageComplete = elapseTime/2;
+                    choosingDartPosition = false;
+                    //stop animation of moving and start animation of pulling back
+                    dardo.transform.position = Vector3.Lerp(originalPosition, pullPosition, percentageComplete);
+                }
+                if (Input.GetKeyUp(KeyCode.Mouse0)){
+                    //shoot
+                    if(isPulled){
+                        elapseTime = 0f;
+                    }
+                    isPulled = false;
+                    shootingDart = true;
+                }
+
+                if(shootingDart){
+                    elapseTime += Time.deltaTime;
+                    float percentageComplete = elapseTime/.16f;
+                    dardo.transform.position = Vector3.Lerp(pullPosition, endPosition, percentageComplete);
+                }
             }
         }
     }
@@ -72,6 +129,11 @@ public class PlayerMinigameActions : MonoBehaviour
         playermovement.canMove = true;
         playercamera.moveCamera = true;
         playerActions.currentGame = PlayerStats.CurrentGame.none;
+    }
+
+    private float RemapRange(float value, float InputA, float InputB, float OutputA, float OutputB)
+    {
+        return (value - InputA) / (InputB - InputA) * (OutputB - OutputA) + OutputA;
     }
 
 }

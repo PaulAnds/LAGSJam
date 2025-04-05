@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     
     [Header("Canica Settings")]
     public float numberOfTriesCanicas;
+    
+    [Header("Canica Settings")]
+    public float numberOfBalloonsToWin;
 
     [Header("References")]
     public Text totalPointsCanicasText;
