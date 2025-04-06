@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Soccer Settings")]
     public float arrowSpeed = 4f;
+    public float[] soccerGoals = {-1, -1, -1, -1, -1};
+    public int goalNumber = 0;
 
     [Header("References")]
     public Text totalPointsMarbleText;
@@ -30,9 +33,17 @@ public class GameManager : MonoBehaviour
     public float numberOfCurrentTries;
     [HideInInspector] 
     public float totalPointsMarble;
+    [Header("Sounds")]
+    public AudioClip balloonPop;
+    public AudioClip soccerHit;
+    public AudioClip marbleMove;
+    public AudioClip victoryMinigame;
+    public AudioClip loseMinigame;
+    public AudioSource playerAS;
 
     void Start()
     {
+        playerAS = FindAnyObjectByType<PlayerStats>().gameObject.transform.GetChild(3).GetComponentInChildren<AudioSource>();
         numberOfTriesMarbleGO = GameObject.Find("NumberMarblesLeft");
     }
     void Update()

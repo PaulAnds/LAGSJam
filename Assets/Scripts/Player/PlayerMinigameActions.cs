@@ -69,6 +69,10 @@ public class PlayerMinigameActions : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.E) && !playercamera.moveCamera){
                 ExitGame();
                 gameManager.marbleHints.SetActive(true);
+                gameManager.goalNumber = 0;
+                for(int i = 0; i < 5; i++){
+                    gameManager.soccerGoals[i] = -1;
+                }
             }
 
             //Canica
@@ -90,6 +94,8 @@ public class PlayerMinigameActions : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.Space)){
                     gameManager.marbleHints.SetActive(false);
                     rb.constraints = RigidbodyConstraints.None;
+                    gameManager.playerAS.clip = gameManager.marbleMove;
+                    gameManager.playerAS.Play();
                     //          cambiar esto v dependiendo de la posicion del minijuego
                     rb.AddForce(-marble.transform.right * speedDir.y);
                     scale.SetActive(false);
@@ -219,6 +225,8 @@ public class PlayerMinigameActions : MonoBehaviour
                         //hacer flecha invisible
                         soccerArrow.GetComponentInChildren<Image>().enabled = false;
                         //shoot
+                        gameManager.playerAS.clip = gameManager.soccerHit;
+                        gameManager.playerAS.Play();
                         soccerBall.GetComponent<Rigidbody>().AddForce(soccerArrow.transform.right * shootDirection.x * 30000);
                     }
                 }
@@ -230,7 +238,7 @@ public class PlayerMinigameActions : MonoBehaviour
         playercamera.positionToMove = playercamera.oldCameraLocation;
         playermovement.canMove = true;
         playercamera.moveCamera = true;
-        playerActions.currentGame = PlayerStats.CurrentGame.none;
+        playerActions.currentGame = PlayerStats.CurrentGame.none; 
     }
 
     private float RemapRange(float value, float InputA, float InputB, float OutputA, float OutputB)

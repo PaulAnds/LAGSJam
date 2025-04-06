@@ -18,7 +18,6 @@ public class Test_Dardo : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Balloon"){
-            print(other.gameObject.GetComponent<Test_ColorCheck>().currentColor.ToString());
             switch(other.gameObject.GetComponent<Test_ColorCheck>().currentColor.ToString()){
                 case "purple" :
                     gameManager.balloonsToHit[0]++;
@@ -43,9 +42,13 @@ public class Test_Dardo : MonoBehaviour
             }
             Destroy(other.gameObject);
             gameManager.numberOfBalloonsToWin--;
+            gameManager.playerAS.clip = gameManager.balloonPop;
+            gameManager.playerAS.Play();
             if(gameManager.numberOfBalloonsToWin <= 0){
                 playerActions.ExitGame();
                 gameManager.hasWonDarts = true;
+                gameManager.playerAS.clip = gameManager.victoryMinigame;
+                gameManager.playerAS.Play();
 
             }
             transform.position = originalSpawn;
@@ -54,6 +57,8 @@ public class Test_Dardo : MonoBehaviour
         }
         if(other.gameObject.tag == "Board"){
             ResetBoard();
+            gameManager.playerAS.clip = gameManager.loseMinigame;
+            gameManager.playerAS.Play();
         }
     }
 

@@ -52,7 +52,20 @@ MonoBehaviour:
   numberOfBalloonsToWin: 10
   frequency: 3
   speed: 3
+  balloonsToHit:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   arrowSpeed: 4
+  soccerGoals:
+  - -1
+  - -1
+  - -1
+  - -1
+  - -1
+  goalNumber: 0
   totalPointsMarbleText: {fileID: 0}
   numberOfTriesMarbleGO: {fileID: 0}
   marbleHints: {fileID: 0}
