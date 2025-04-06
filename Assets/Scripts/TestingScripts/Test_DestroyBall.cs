@@ -6,6 +6,7 @@ public class Test_DestroyBall : MonoBehaviour
 
     public PlayerMinigameActions playerActionsRef;
     public GameObject soccerBallPrefab;
+    public GameObject soccerBallParent;
 
 
     void Start()
@@ -31,6 +32,7 @@ public class Test_DestroyBall : MonoBehaviour
             playerActionsRef.soccerArrow.GetComponentInChildren<RectTransform>().transform.rotation = new Quaternion(0,0,0,0);
             playerActionsRef.soccerArrow.GetComponentInChildren<RectTransform>().transform.localScale = new Vector3(.02f, .004f, .006f);
             playerActionsRef.soccerBall = Instantiate(soccerBallPrefab,playerActionsRef.soccerBallOriginalLocation,new Quaternion(0f,0f,0f,0f));
+            playerActionsRef.soccerBall.transform.SetParent(soccerBallParent.transform);
         }
     }
 

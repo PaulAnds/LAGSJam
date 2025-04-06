@@ -9,6 +9,7 @@ TagManager:
   - MarbleGame
   - DartGame
   - SoccerGame
+  - Board
   layers:
   - Default
   - TransparentFX

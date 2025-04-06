@@ -9,7 +9,6 @@ public class PlayerMinigameActions : MonoBehaviour
     private PlayerCamera playercamera;
     private PlayerStats playerActions;
     private GameManager gameManager;
-    private GameObject scale;
     //Darts
     private GameObject dart;
     private bool lockMouse = true;
@@ -25,7 +24,10 @@ public class PlayerMinigameActions : MonoBehaviour
     private Vector3 shootDirection = new Vector3(.02f,0f,0f);
 
     //These have references in other scripts, need them public, not needed on inspector[HideInInspector]
+    [HideInInspector]
     public GameObject soccerArrow;
+    [HideInInspector]
+    public GameObject scale;
     [HideInInspector]
     public Vector3 soccerBallOriginalLocation;
     [HideInInspector]
@@ -53,7 +55,8 @@ public class PlayerMinigameActions : MonoBehaviour
         soccerArrow = GameObject.Find("SoccerArrow");
         soccerBall = GameObject.Find("SoccerBall");
         dart = GameObject.Find("Dart");
-        scale = GameObject.Find("Scale");
+        scale = marble.transform.GetChild(0).GetChild(0).gameObject;
+        scale.SetActive(false);
         rb = marble.GetComponent<Rigidbody>(); 
         playercamera = FindFirstObjectByType<PlayerCamera>();
         soccerBallOriginalLocation = soccerBall.transform.position;
@@ -65,29 +68,33 @@ public class PlayerMinigameActions : MonoBehaviour
 
             if(Input.GetKeyDown(KeyCode.E) && !playercamera.moveCamera){
                 ExitGame();
+                gameManager.marbleHints.SetActive(true);
             }
 
             //Canica
             if(playerActions.currentGame == PlayerStats.CurrentGame.marble){
-                if (Input.GetKey(KeyCode.A)&& marble.transform.localPosition.z >= 0.1f && !charging){
+                if (Input.GetKey(KeyCode.A)&& marble.transform.localPosition.z >= -0.45f && !charging){
                     marble.transform.position -= speedDir * Time.deltaTime;
                 }
-                if (Input.GetKey(KeyCode.D)&& marble.transform.localPosition.z <= 0.98f && !charging){
+                if (Input.GetKey(KeyCode.D)&& marble.transform.localPosition.z <= 0.13f && !charging){
                     marble.transform.position += speedDir * Time.deltaTime;
                 }
                 if (Input.GetKey(KeyCode.Space)){
                     charging = true;
-                    if(scale.transform.localScale.x <= 0.7f){
+                    scale.SetActive(true);
+                    if(scale.transform.localScale.x <= 4f){
                         speedDir.y += Time.deltaTime * 200;
-                        scale.transform.localScale += new Vector3(0.1f,0,0) * (Time.deltaTime * 2.3f);
+                        scale.transform.localScale += new Vector3(0.1f,0,0) * (Time.deltaTime * 5f);
                     }
                 }
                 if (Input.GetKeyUp(KeyCode.Space)){
+                    gameManager.marbleHints.SetActive(false);
                     rb.constraints = RigidbodyConstraints.None;
                     //          cambiar esto v dependiendo de la posicion del minijuego
                     rb.AddForce(-marble.transform.right * speedDir.y);
+                    scale.SetActive(false);
                     speedDir.y = 0f;
-                    scale.transform.localScale = new Vector3(.1f,.1f,.1f);
+                    scale.transform.localScale = new Vector3(1f,1f,1f);
                 }
             }
 

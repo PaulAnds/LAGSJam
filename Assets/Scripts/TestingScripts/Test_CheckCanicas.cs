@@ -4,6 +4,7 @@ using UnityEngine;
 public class Test_CheckCanicas : MonoBehaviour
 {
     public GameObject objectToSpawn;
+    public GameObject parentOfMarble;
     public float scoreValue; 
     private bool ballIn;
     private Test_DestroyProjectiles originSpawnLocation;
@@ -38,7 +39,9 @@ public class Test_CheckCanicas : MonoBehaviour
             ballIn = true;
             Destroy(playerActionRef.marble);
             GameObject newObject = Instantiate(objectToSpawn,originSpawnLocation.spherePosition, new Quaternion(0,0,0,0));
+            newObject.transform.SetParent(parentOfMarble.transform);
             playerActionRef.marble = newObject;
+            playerActionRef.scale = playerActionRef.marble.transform.GetChild(0).GetChild(0).gameObject;
             originSpawnLocation.marble = newObject;
             playerActionRef.rb = playerActionRef.marble.GetComponent<Rigidbody>(); 
             originSpawnLocation.rb = playerActionRef.marble.GetComponent<Rigidbody>(); 

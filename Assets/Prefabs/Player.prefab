@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBeforeDeath: 10
   currentGame: 0
+  hasEyesClosed: 0
 --- !u!114 &4194777345011624565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,8 +313,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c002af49b86e6a419347845f69eb6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowSpeed: 4
-  shootDirection: {x: 0.02, y: 0, z: 0}
+  soccerArrow: {fileID: 0}
+  scale: {fileID: 0}
+  soccerBallOriginalLocation: {x: 0, y: 0, z: 0}
+  soccerBall: {fileID: 0}
+  xSoccerRotation: 1
   charging: 0
   marble: {fileID: 0}
   rb: {fileID: 0}
@@ -424,13 +428,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1567236469732795486}
     m_Modifications:
+    - target: {fileID: 1125777530716606870, guid: f87cc5ba09eabf4498e28b9339a95ae6, type: 3}
+      propertyPath: m_Data.m_SourceObjects.m_Length
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125777530716606870, guid: f87cc5ba09eabf4498e28b9339a95ae6, type: 3}
+      propertyPath: m_Data.m_SourceObjects.m_Item0.weight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4925382425637627314, guid: f87cc5ba09eabf4498e28b9339a95ae6, type: 3}
       propertyPath: m_Name
       value: Chihuahua_Anims
       objectReference: {fileID: 0}
     - target: {fileID: 5279594194475647390, guid: f87cc5ba09eabf4498e28b9339a95ae6, type: 3}
+      propertyPath: finalScaleReference
+      value: 0.3939119
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279594194475647390, guid: f87cc5ba09eabf4498e28b9339a95ae6, type: 3}
       propertyPath: _Editor_OnValidateTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307248271904528256, guid: f87cc5ba09eabf4498e28b9339a95ae6, type: 3}
+      propertyPath: m_Data.m_SourceObjects.m_Length
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5307248271904528256, guid: f87cc5ba09eabf4498e28b9339a95ae6, type: 3}
+      propertyPath: m_Data.m_SourceObjects.m_Item0.weight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5697521460976123656, guid: f87cc5ba09eabf4498e28b9339a95ae6, type: 3}
       propertyPath: m_LocalPosition.x
