@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public float numberOfBalloonsToWin;
     public float frequency = 3f;
     public float speed = 3f;
+    public float[] balloonsToHit = {0, 0, 0, 0, 0};
 
     [Header("Soccer Settings")]
     public float arrowSpeed = 4f;

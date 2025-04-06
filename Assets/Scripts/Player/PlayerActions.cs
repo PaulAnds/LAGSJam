@@ -19,7 +19,7 @@ public class PlayerStats : MonoBehaviour
     //these are used if we want the "cooldown" of the heartbeat to go down or up faster, i imagine these will be used with the enemies?
     private float agitationIncrement = 1f;
     private float agitationDecrement = 1f;
-    private float heartRate = 1f;
+    public float heartRate = 1f;
     private AudioSource heartBeatSound;
     private Volume CameraVolume;
     private Vignette volumeSettings; 
@@ -42,6 +42,10 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
+
+        if(heartRate >= 9.5){
+            print("Dead HeartAttack");
+        }
         if(playermovement.canMove)
         {
             if (Input.GetKey(KeyCode.Q)){
@@ -56,7 +60,7 @@ public class PlayerStats : MonoBehaviour
                     if(volumeSettings.intensity.value<=1){
                         volumeSettings.intensity.value += Time.deltaTime;
                     }
-                    if(volumeSettings.intensity.value<=0.5f){
+                    if(volumeSettings.intensity.value>=0.9f){
                         hasEyesClosed = true;
                     }
                 }
@@ -79,7 +83,7 @@ public class PlayerStats : MonoBehaviour
                         if(volumeSettings.intensity.value>=0){
                             volumeSettings.intensity.value -= Time.deltaTime;
                         }
-                        if(volumeSettings.intensity.value>=0.5f){
+                        if(volumeSettings.intensity.value<=0.9f){
                             hasEyesClosed = false;
                         }
                     }

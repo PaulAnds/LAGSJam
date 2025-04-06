@@ -301,6 +301,7 @@ MonoBehaviour:
   timeBeforeDeath: 10
   currentGame: 0
   hasEyesClosed: 0
+  heartRate: 1
 --- !u!114 &4194777345011624565
 MonoBehaviour:
   m_ObjectHideFlags: 0

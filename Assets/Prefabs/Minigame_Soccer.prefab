@@ -79,8 +79,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2309264603079206044}
   - component: {fileID: 7391318834812669114}
-  - component: {fileID: 277983457113129752}
-  - component: {fileID: 4733010709031407802}
   - component: {fileID: 1344484179452703090}
   m_Layer: 0
   m_Name: InteractStart
@@ -117,48 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5042c30055c4de4a98e676301b1348b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &277983457113129752
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779497862827385802}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.38, y: 1.5, z: 1.97}
-  m_Center: {x: 0.48, y: 0, z: 0}
---- !u!65 &4733010709031407802
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779497862827385802}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 6.16, y: 1.63, z: 0.16}
-  m_Center: {x: -2.71, y: 0, z: 1}
 --- !u!65 &1344484179452703090
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -174,12 +130,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.19, y: 1.68, z: 0.11}
-  m_Center: {x: -2.77, y: 0, z: -0.93}
+  m_Size: {x: 7.34, y: 1.92, z: 1.78}
+  m_Center: {x: -4.65, y: 0.21, z: 0}
 --- !u!1 &1312758682261688001
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,10 +475,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5654485742691664866}
-  - {fileID: 9062425005371502721}
-  - {fileID: 1957877013837174334}
   - {fileID: 3312158914930321698}
-  - {fileID: 5827880344268912887}
   - {fileID: 2551153319081742654}
   - {fileID: 6282918707259257007}
   - {fileID: 4602295871654516876}
@@ -624,7 +577,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3985274067259464992}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000040233135}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 7.06, y: 0.84, z: -12.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -776,75 +729,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!1 &4990608102017301192
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9062425005371502721}
-  - component: {fileID: 4954766679726868321}
-  - component: {fileID: 7929592837272758996}
-  m_Layer: 0
-  m_Name: Cube (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9062425005371502721
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4990608102017301192}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.374, y: 0.6100001, z: -2.14}
-  m_LocalScale: {x: 7.4996204, y: 3.4017105, z: 0.085465}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3085549036384327155}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4954766679726868321
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4990608102017301192}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7929592837272758996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4990608102017301192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f2b00db6e2e74644b3724345ace0630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerActionsRef: {fileID: 0}
-  soccerBallPrefab: {fileID: 1818310398624598163, guid: b8f2bb58f739e7140ab06924f6c55550, type: 3}
-  soccerBallParent: {fileID: 3985274067259464992}
 --- !u!1 &5337783569512537965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,144 +1179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrue: 1
---- !u!1 &7237665207213827969
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5827880344268912887}
-  - component: {fileID: 6912907718415786914}
-  - component: {fileID: 5755196100633980880}
-  m_Layer: 0
-  m_Name: Cube (8)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5827880344268912887
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7237665207213827969}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.52, y: 0.6100001, z: 1.96}
-  m_LocalScale: {x: 7.763025, y: 3.4017105, z: 0.085465}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3085549036384327155}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6912907718415786914
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7237665207213827969}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5755196100633980880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7237665207213827969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f2b00db6e2e74644b3724345ace0630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerActionsRef: {fileID: 0}
-  soccerBallPrefab: {fileID: 1818310398624598163, guid: b8f2bb58f739e7140ab06924f6c55550, type: 3}
-  soccerBallParent: {fileID: 3985274067259464992}
---- !u!1 &7349690675623346091
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1957877013837174334}
-  - component: {fileID: 5516749538152544932}
-  - component: {fileID: 2141763452055006252}
-  m_Layer: 0
-  m_Name: Cube (9)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1957877013837174334
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7349690675623346091}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.70710623, z: -0, w: 0.70710737}
-  m_LocalPosition: {x: -0.648, y: 0.6100001, z: -0.11}
-  m_LocalScale: {x: 4.1756916, y: 3.4017105, z: 0.085465}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3085549036384327155}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!65 &5516749538152544932
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7349690675623346091}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2141763452055006252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7349690675623346091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f2b00db6e2e74644b3724345ace0630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerActionsRef: {fileID: 0}
-  soccerBallPrefab: {fileID: 1818310398624598163, guid: b8f2bb58f739e7140ab06924f6c55550, type: 3}
-  soccerBallParent: {fileID: 3985274067259464992}
 --- !u!1 &8589340670871457317
 GameObject:
   m_ObjectHideFlags: 0

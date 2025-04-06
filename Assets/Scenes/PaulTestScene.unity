@@ -2130,64 +2130,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986500078}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1992978592
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1992978593}
-  - component: {fileID: 1992978594}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1992978593
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992978592}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1992978594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992978592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 575fa243a5ca06142941499e0c9dbaaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasWonMarble: 0
-  hasWonSoccer: 0
-  hasWonDarts: 0
-  numberOfTriesMarble: 5
-  marbleSpeed: 0.5
-  numberOfBalloonsToWin: 10
-  frequency: 3
-  speed: 3
-  arrowSpeed: 4
-  totalPointsMarbleText: {fileID: 320579314}
-  numberOfTriesMarbleGO: {fileID: 71732969}
-  marbleHints: {fileID: 601984691}
-  numberOfCurrentTries: 0
-  totalPointsMarble: 0
 --- !u!1 &2039219873
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,10 +2303,6 @@ PrefabInstance:
       propertyPath: finalScaleReference
       value: 0.3939119
       objectReference: {fileID: 0}
-    - target: {fileID: 7285894854030722256, guid: 199cdcb2539fa7b46976e579a10c335f, type: 3}
-      propertyPath: _Editor_OnValidateTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7349718572334731982, guid: 199cdcb2539fa7b46976e579a10c335f, type: 3}
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 
@@ -2443,6 +2381,75 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6c9a049ef992d047939976d5e3f2e04, type: 3}
+--- !u!1001 &2932341691665509585
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5277513715597338601, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475143198769445139, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: marbleHints
+      value: 
+      objectReference: {fileID: 601984691}
+    - target: {fileID: 7475143198769445139, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: numberOfTriesMarbleGO
+      value: 
+      objectReference: {fileID: 71732969}
+    - target: {fileID: 7475143198769445139, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: totalPointsMarbleText
+      value: 
+      objectReference: {fileID: 320579314}
+    - target: {fileID: 7913083627470368301, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913083627470368301, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913083627470368301, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913083627470368301, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913083627470368301, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913083627470368301, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913083627470368301, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913083627470368301, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913083627470368301, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913083627470368301, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1c8b284e527e42f4d864de965cfcd510, type: 3}
 --- !u!1001 &5861587778447926711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2561,7 +2568,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1992978593}
+  - {fileID: 2932341691665509585}
   - {fileID: 1728373494}
   - {fileID: 477763433}
   - {fileID: 2037627327152781812}

@@ -20,7 +20,7 @@ public class Test_CheckCanicas : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         gameManager.totalPointsMarble += scoreValue;
-        if(gameManager.totalPointsMarble >= 199f){
+        if(gameManager.totalPointsMarble == 1960f){
             gameManager.hasWonMarble = true;
             playerActionRef.ExitGame();
         }
