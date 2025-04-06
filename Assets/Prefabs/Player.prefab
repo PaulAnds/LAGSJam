@@ -312,9 +312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c002af49b86e6a419347845f69eb6fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  marbleSpeed: 2
-  frequency: 3
-  speed: 3
+  arrowSpeed: 4
+  shootDirection: {x: 0.02, y: 0, z: 0}
   charging: 0
   marble: {fileID: 0}
   rb: {fileID: 0}

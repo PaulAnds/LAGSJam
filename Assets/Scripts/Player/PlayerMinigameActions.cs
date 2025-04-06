@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMinigameActions : MonoBehaviour
 {
@@ -17,7 +18,16 @@ public class PlayerMinigameActions : MonoBehaviour
     private Vector3 originalPosition;
     private Vector3 endPosition;
     private float elapseTime;
-
+    //Soccer
+    public GameObject soccerArrow;
+    public GameObject soccerBall;
+    public Vector3 soccerBallOriginalLocation;
+    public bool xSoccerRotation = true;
+    private bool ySoccerRotation= false;
+    private bool soccerStrength= false;
+    private bool direction = false;
+    public float arrowSpeed = 4f;
+    public Vector3 shootDirection = new Vector3(.02f,0f,0f);
 
     //These have references in other scripts, need them public, not needed on inspector
     [HideInInspector]
@@ -38,10 +48,13 @@ public class PlayerMinigameActions : MonoBehaviour
         playerActions = GetComponent<PlayerStats>();
         speedDir.z = gameManager.marbleSpeed;
         marble = GameObject.Find("Marble");
+        soccerArrow = GameObject.Find("SoccerArrow");
+        soccerBall = GameObject.Find("SoccerBall");
         dart = GameObject.Find("Dart");
         scale = GameObject.Find("Scale");
         rb = marble.GetComponent<Rigidbody>(); 
         playercamera = FindFirstObjectByType<PlayerCamera>();
+        soccerBallOriginalLocation = soccerBall.transform.position;
     }
 
     void Update()
@@ -121,6 +134,84 @@ public class PlayerMinigameActions : MonoBehaviour
                     elapseTime += Time.deltaTime;
                     float percentageComplete = elapseTime/.16f;
                     dart.transform.position = Vector3.Lerp(pullPosition, endPosition, percentageComplete);
+                }
+            }
+
+            //soccer
+            if(playerActions.currentGame == PlayerStats.CurrentGame.soccer){
+                
+                if(xSoccerRotation){
+                    if(soccerArrow.GetComponent<RectTransform>().eulerAngles.y >= 20 && soccerArrow.GetComponent<RectTransform>().eulerAngles.y <= 335){  
+                        direction = !direction;
+                    }
+                    
+                    if(direction){
+                        soccerArrow.transform.Rotate(0, -arrowSpeed/10f, 0);
+                    }
+                    else{
+                        soccerArrow.transform.Rotate(0, arrowSpeed/10f, 0);
+                    }
+                }
+
+                if(ySoccerRotation){
+                    if(soccerArrow.GetComponent<RectTransform>().eulerAngles.z >= 350f){  
+                        direction = false;
+                        //right
+                    }
+                    else if(soccerArrow.GetComponent<RectTransform>().eulerAngles.z >= 45f){  
+                        direction = true;
+                        //left
+                    }
+                    
+                    if(direction){
+                        soccerArrow.transform.Rotate(0, 0, -arrowSpeed/10f);
+                    }
+                    else{
+                        soccerArrow.transform.Rotate(0, 0, arrowSpeed/10f);
+                    }
+                }
+                
+                if(soccerStrength){
+                    if(soccerArrow.GetComponent<RectTransform>().localScale.x <= .009f){  
+                        direction = false;
+                        //scale up
+                    }
+                    else if(soccerArrow.GetComponent<RectTransform>().localScale.x >= .02f){  
+                        direction = true;
+                        //scale down
+                    }
+                    if(direction){
+                        shootDirection.x -= .01f * Time.deltaTime;
+                        soccerArrow.transform.localScale = new Vector3(shootDirection.x,soccerArrow.transform.localScale.y,soccerArrow.transform.localScale.z);
+                    }
+                    else{
+                        shootDirection.x += .01f * Time.deltaTime;
+                        soccerArrow.transform.localScale = new Vector3(shootDirection.x,soccerArrow.transform.localScale.y,soccerArrow.transform.localScale.z);
+                    }
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space)){
+                    xSoccerRotation = false;
+                    if(!xSoccerRotation && !ySoccerRotation && !soccerStrength){
+                        ySoccerRotation = true;
+                        shootDirection.y = soccerArrow.GetComponent<RectTransform>().eulerAngles.y;
+                        //lock y rotation
+                    }
+                    else if(ySoccerRotation && !xSoccerRotation){
+                        ySoccerRotation = false;
+                        soccerStrength = true;
+                        shootDirection.z = soccerArrow.GetComponent<RectTransform>().eulerAngles.z;
+                        //lock z rotation
+                    }
+                    else if(soccerStrength)
+                    {
+                        soccerStrength = false;
+                        //lock strength -> done this on above if
+                        //hacer flecha invisible
+                        soccerArrow.GetComponentInChildren<Image>().enabled = false;
+                        //shoot
+                        soccerBall.GetComponent<Rigidbody>().AddForce(soccerArrow.transform.right * shootDirection.x * 30000);
+                    }
                 }
             }
         }
