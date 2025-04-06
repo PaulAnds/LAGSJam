@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public float frequency = 3f;
     public float speed = 3f;
 
+    [Header("Soccer Settings")]
+    public float arrowSpeed = 4f;
+
     [Header("References")]
     public Text totalPointsMarbleText;
     public Text numberOfTriesMarbleText;

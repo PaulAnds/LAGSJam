@@ -13,6 +13,8 @@ public class PlayerStats : MonoBehaviour
     public float timeBeforeDeath = 10f;
     [Header("Current Game")]
     public CurrentGame currentGame = CurrentGame.none;
+    [Header("Parameters")]
+    public bool hasEyesClosed = false;
 
     //these are used if we want the "cooldown" of the heartbeat to go down or up faster, i imagine these will be used with the enemies?
     private float agitationIncrement = 1f;
@@ -54,6 +56,9 @@ public class PlayerStats : MonoBehaviour
                     if(volumeSettings.intensity.value<=1){
                         volumeSettings.intensity.value += Time.deltaTime;
                     }
+                    if(volumeSettings.intensity.value<=0.5f){
+                        hasEyesClosed = true;
+                    }
                 }
                 if(CameraVolume.profile.TryGet(out colorSettings)){
                     if(colorSettings.postExposure.value >= -8){
@@ -73,6 +78,9 @@ public class PlayerStats : MonoBehaviour
                     {
                         if(volumeSettings.intensity.value>=0){
                             volumeSettings.intensity.value -= Time.deltaTime;
+                        }
+                        if(volumeSettings.intensity.value>=0.5f){
+                            hasEyesClosed = false;
                         }
                     }
                     if(CameraVolume.profile.TryGet(out colorSettings)){

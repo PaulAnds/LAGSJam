@@ -19,17 +19,19 @@ public class PlayerMinigameActions : MonoBehaviour
     private Vector3 endPosition;
     private float elapseTime;
     //Soccer
-    public GameObject soccerArrow;
-    public GameObject soccerBall;
-    public Vector3 soccerBallOriginalLocation;
-    public bool xSoccerRotation = true;
     private bool ySoccerRotation= false;
     private bool soccerStrength= false;
     private bool direction = false;
-    public float arrowSpeed = 4f;
-    public Vector3 shootDirection = new Vector3(.02f,0f,0f);
+    private Vector3 shootDirection = new Vector3(.02f,0f,0f);
 
-    //These have references in other scripts, need them public, not needed on inspector
+    //These have references in other scripts, need them public, not needed on inspector[HideInInspector]
+    public GameObject soccerArrow;
+    [HideInInspector]
+    public Vector3 soccerBallOriginalLocation;
+    [HideInInspector]
+    public GameObject soccerBall;
+    [HideInInspector]
+    public bool xSoccerRotation = true;
     [HideInInspector]
     public bool charging;
     [HideInInspector]
@@ -146,10 +148,10 @@ public class PlayerMinigameActions : MonoBehaviour
                     }
                     
                     if(direction){
-                        soccerArrow.transform.Rotate(0, -arrowSpeed/10f, 0);
+                        soccerArrow.transform.Rotate(0, -gameManager.arrowSpeed/10f, 0);
                     }
                     else{
-                        soccerArrow.transform.Rotate(0, arrowSpeed/10f, 0);
+                        soccerArrow.transform.Rotate(0, gameManager.arrowSpeed/10f, 0);
                     }
                 }
 
@@ -164,10 +166,10 @@ public class PlayerMinigameActions : MonoBehaviour
                     }
                     
                     if(direction){
-                        soccerArrow.transform.Rotate(0, 0, -arrowSpeed/10f);
+                        soccerArrow.transform.Rotate(0, 0, -gameManager.arrowSpeed/10f);
                     }
                     else{
-                        soccerArrow.transform.Rotate(0, 0, arrowSpeed/10f);
+                        soccerArrow.transform.Rotate(0, 0, gameManager.arrowSpeed/10f);
                     }
                 }
                 
